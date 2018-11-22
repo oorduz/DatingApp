@@ -1,0 +1,52 @@
+<mat-toolbar color="primary" class.mat-elevation-z2>
+  <div fxFlex fxLayout fxLayoutAlign="flex-start"  fxHide.xs>
+    <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+      <li>
+        <span  class="label">Dating App</span>
+      </li>
+      <li>
+          <button mat-flat-button color="primary">Matches</button>
+      </li>
+      <li>
+          <button mat-flat-button color="primary">Lists</button>
+      </li>
+      <li>
+          <button mat-flat-button color="primary">Messages</button>
+      </li>
+      <li>
+          <button mat-flat-button color="primary" (click)="logout()" >Logout</button>
+      </li>
+    </ul>
+  </div>
+  <div fxFlex fxLayout fxLayoutAlign="flex-end"  fxHide.xs>
+      <div *ngIf="loggedIn()">
+          <button mat-button [matMenuTriggerFor]="menu">Wellcome User</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Edit profile</button>
+            <button mat-menu-item>Logout</button>
+          </mat-menu>
+        </div>
+    <div *ngIf="!loggedIn()">
+    <form #loginForm="ngForm" (ngSubmit)="login()">
+     <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+          <li>
+            <!-- <mat-form-field> -->
+            <input matInput placeholder="Username" name="Username" [(ngModel)]="model.username" required>
+            <!-- </mat-form-field> -->
+         </li>
+         <li>
+            <!-- <mat-form-field> -->
+            <input matInput  type="password" placeholder="Password" name="Password" [(ngModel)]="model.password" required>
+            <!-- </mat-form-field> -->
+         </li>
+         <li>
+            <button mat-button type="submit" [disabled]="!loginForm.valid">
+                <mat-icon>input</mat-icon>
+                <span class="label">Login</span>
+               </button>
+         </li>
+     </ul>
+      </form>
+    </div>
+  </div>
+ </mat-toolbar>

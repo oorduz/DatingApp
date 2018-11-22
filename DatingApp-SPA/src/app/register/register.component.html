@@ -1,0 +1,27 @@
+<div fxLayout="column" fxLayoutAlign="center center" >
+
+
+<mat-card class="main-card">    
+  <!-- Title of an Card -->    
+  <mat-card-title style="text-align:center">    
+      Sign Up    
+  </mat-card-title>    
+  <mat-card-content>    
+      <form #registerForm="ngForm" (ngSubmit)="register()">    
+        <div fxLayout="column" fxLayoutAlign="center">
+            <mat-form-field class="demo-full-width" fxFlex="30%">    
+                <input matInput placeholder="Username" required name="username" [(ngModel)]="model.username" >    
+            </mat-form-field>  
+            <mat-form-field class="demo-full-width"  fxFlex="30%">    
+                <input matInput type="password" placeholder="Password" required [(ngModel)]="model.password" name="password">    
+            </mat-form-field> 
+            <div fxLayout="row" fxLayoutAlign="center" >
+              <button mat-raised-button color="accent" type="submit" fxLayoutAlign="start">Register</button>    
+              <div fxFlex=5></div>
+              <button mat-raised-button color="accent" type="button" (click)="cancel()" fxLayoutAlign="end">Cancel</button>    
+              </div>
+          </div>
+      </form>    
+  </mat-card-content>    
+</mat-card>   
+</div>

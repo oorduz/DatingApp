@@ -1,0 +1,11 @@
+.title {
+    text-align:center
+  }
+
+.content-center {    
+    text-align: -webkit-center;    
+} 
+
+.main-card {
+    width: 40%;
+}
