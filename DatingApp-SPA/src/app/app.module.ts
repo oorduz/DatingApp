@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
    MatSidenavModule,
@@ -24,6 +24,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import { AuthService } from './services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { ErrorInterceptor } from './services/error.interceptor';
 
 @NgModule({
    declarations: [
@@ -52,7 +53,12 @@ import { RegisterComponent } from './register/register.component';
       MatInputModule
    ],
    providers: [
-      AuthService
+      AuthService,
+      {
+         provide: HTTP_INTERCEPTORS,
+         useClass: ErrorInterceptor,
+         multi: true
+       }
    ],
    bootstrap: [
       AppComponent
